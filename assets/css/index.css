@@ -3,15 +3,64 @@
 body {
     background:white;
     font-family: Spartan;
-    background-image: url('/assets/images/bg-pattern-bottom-desktop.svg');
-    background-position: right;
-    background-repeat: no-repeat;
+    background-image: url('/assets/images/bg-pattern-top-desktop.svg'), url('/assets/images/bg-pattern-bottom-desktop.svg');
+    background-position: left top, right;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: auto, cover;
 }
 
 .container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 15px;
+    box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 1440px;
+	padding: 0 15px;
+    width: 90%;
+    position: relative;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+div > a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: hsl(303, 10%, 53%);
+}
+
+div > a:hover {
+    color: black;
+}
+
+div > h2:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.navs {
+    margin-top: 25px;
+}
+
+.login-btn {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 80px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.navs-span {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
 }
 
 .main-text {
@@ -25,12 +74,6 @@ body {
 
 .dark-grayish {
     color: hsl(303, 10%, 53%);
-}
-
-.main-section {
-    background-image: url('/assets/images/bg-pattern-top-desktop.svg');
-    background-repeat: no-repeat;
-    background-position: left top;
 }
 
 .header {
@@ -89,7 +132,7 @@ body {
 .box {
     background-color: hsl(300, 43%, 22%);
     color: white;
-    width: 350px;
+    width: 325px;
     display: inline-table;
     flex-direction: column;
     padding: 20px;
@@ -152,9 +195,13 @@ body {
     margin-left: 15px;
 }
 
+.hidden {
+    display: flex;
+}
+
 @media only screen and (max-width: 1280px) {
     .box {
-        width: 280px;
+        width: 250px;
     }
 }
 
@@ -166,7 +213,7 @@ body {
     .box {
         background-color: hsl(300, 43%, 22%);
         color: white;
-        width: 98%;
+        width: 100%;
         display: inline-table;
         flex-direction: column;
         padding: 10px;
@@ -180,13 +227,21 @@ body {
 
 @media only screen and (max-width: 768px) {
     body {
-        background-image: url('/assets/images/bg-pattern-bottom-mobile.svg');
+        background-image: url('/assets/images/bg-pattern-top-mobile.svg'), url('/assets/images/bg-pattern-bottom-mobile.svg');
     }
 
-    .main-section {
-        background-image: url('/assets/images/bg-pattern-top-mobile.svg');
-        background-repeat: no-repeat;
-        background-position: left top;
+    .menu-icon {
+        display: inline;
+        z-index: 1;
+    }
+
+    .menu-icon > img {
+        border-style: none;
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 12px;
+        width: 40px;
     }
 
     .main-text {
@@ -237,9 +292,58 @@ body {
     .box:nth-child(3) {
         margin-top: 30px;
     }
+
+    .navs-span {
+        display: flex;
+        width: 100%;
+        position: absolute;
+        flex-direction: column;
+        background-color: hsl(300, 43%, 22%);
+        border-radius: 10px;
+        margin-top: 55px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .navs {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    div > a {
+        color: white;
+        margin-top: 15px;
+    }
+
+    .login-div {
+        border-top: 1px solid white;
+        padding-left: 10px;
+        padding-bottom: 15px;
+        margin-top: 10px;
+    }
+
+    .login-btn {
+        background-color: whitesmoke;
+        border-radius: 10px;
+        margin-top: 15px;
+        width: 80px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
+    }
 }
 
-@media only screen and (max-width: 425PX) {
+@media only screen and (max-width: 425px) {
+    .container {
+        width: 100%;
+    }
+
     .ratings {
         display: flex;
         flex-direction: column;
@@ -258,5 +362,9 @@ body {
         flex-direction: column;
         padding: 20px;
         border-radius: 7px;
+    }
+
+    .navs-span {
+        width: 92%;
     }
 }
